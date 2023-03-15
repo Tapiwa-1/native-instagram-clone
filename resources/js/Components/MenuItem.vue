@@ -36,7 +36,7 @@ if (iconString.value === 'Log out') icon = Menu
                 v-if="iconString === 'Profile'"
                 :class="{'mr-1': iconString === 'Profile'}"
                 class="rounded-full ml-[2px] w-[30px] cursor-pointer"
-                src="http://via.placeholder.com/640x360"
+                src="http://via.placeholder.com/640x640"
             >
             <component v-else :is="icon" fillColor="#000000" :size="36" />
             <span class="xl:block hidden text-black font-extrabold text-[18px] pl-2 mt-0.5">

@@ -39,7 +39,7 @@ let showCreatePost = ref(false);
                                 focus:ring-0
                             "
                         >
-            
+
                 </div>
                 <HeartOutline class="pl-4 pr-3" fillColor="#000000" :size="27" />
             </div>
@@ -54,7 +54,7 @@ let showCreatePost = ref(false);
     </div>
     <div id="SideNav" class="fixed h-full bg-white xl:w-[280px] w-[80px] md:block hidden border-r border-r-gray-300">
         <Link href="/">
-            <img class="xl:hidden block w-[25px] mt-10 ml-[25px] mb-10 cursor-pointer" src="/insta-logo-small.png">    
+            <img class="xl:hidden block w-[25px] mt-10 ml-[25px] mb-10 cursor-pointer" src="/insta-logo-small.png">
             <img class="xl:block hidden w-[120px] mt-10 ml-6 mb-10 cursor-pointer" src="/insta-logo.png">
         </Link>
         <div class="px-3">
@@ -67,10 +67,35 @@ let showCreatePost = ref(false);
             <MenuItem iconString="Notifications" class="mb-4"/>
             <MenuItem iconString="Profile" class="mb-4"/>
 
-            <Link href="/" class="absolute bottom-0 px-3 w-full">
-                <MenuItem iconString="Log out" class="mb-4"/>
-            </Link>
+
         </div>
+        <Link href="/" class="absolute bottom-0 px-3 w-full">
+            <MenuItem iconString="Log out" class="mb-4"/>
+        </Link>
+    </div>
+    <div class="flex lg:justify-between bg-white h-full w-[100%-280px] xl:pl-[280px] lg:pl-[100px] overflow-auto">
+            <div
+                class="mx-auto md:pt-6 pt-20"
+                :class="$page.url === '/' ? 'lg:w-8/12 w-full' : 'max-w-[1200px]'"
+            >
+                <main>
+                    <slot />
+                </main>
+            </div>
+            <div v-if="$page.url === '/'" id="SuggestionsSection" class="lg:w-4/12 lg:block hidden text-black mt-10">
+                <Link href="/" class="flex items-center justify-between max-w-[300px]">
+                    <div class="flex items-center">
+                        <img class="rounded-full z-10 w-[58px] h-[58px]" src="http://via.placeholder.com/640x640">
+                        <div class="pl-4">
+                            <div class="text-black font-extrabold">User Name</div>
+                            <div class="text-gray-500 text-extrabold text-sm">User Name</div>
+                        </div>
+                    </div>
+                    <button class="text-blue-500 hover:text-gray-900 text-xs font-extrabold">
+                        Switch
+                    </button>
+                </Link>
+            </div>
     </div>
  </div>
 </template>
