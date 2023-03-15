@@ -95,7 +95,29 @@ let showCreatePost = ref(false);
                         Switch
                     </button>
                 </Link>
+                <div class="max-w-[300px] flex items-center justify-between py-3">
+                    <div class="text-gray-500 font-extrabold">Suggestions for you</div>
+                    <button class="text-blue-500 hover:text-gray-900 text-xs font-extrabold">
+                        See All
+                    </button>
+                </div>
+                    <Link href="/" class="flex items-center justify-between max-w-[300px] pb-2">
+                        <div class="flex items-center">
+                            <img class="rounded-full z-10 w-[37px] h-[37px]" src="http://placeskull.com/170/170">
+                            <div class="pl-4">
+                                <div class="text-black font-extrabold">Random User</div>
+                                <div class="text-gray-500 text-extrabold text-sm">Suggested for you</div>
+                            </div>
+                        </div>
+                        <button class="text-blue-500 hover:text-gray-900 text-xs font-extrabold">
+                            Follow
+                        </button>
+                    </Link>
             </div>
+
+
+
+
     </div>
  </div>
 </template>
