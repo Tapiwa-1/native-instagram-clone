@@ -8,7 +8,24 @@
     import ChevronDown from 'vue-material-design-icons/ChevronDown.vue';
 
     // const user = usePage().props.auth.user
+    const createPostFunc = ()=>{
+        //create errors first
+        error.value.text = null
+        error.value.file = null
 
+        router.post('/posts', form,{
+            forceFormData: true,
+            preserveScroll: true,
+            onError: errors => {
+                errors && errors.text ? error.value.text = errors.text: ''
+                errors && errors.file ? error.value.file = errors.file: ''
+            },
+            onSuccess: () => {
+                closeOverlay()
+                emit('close')
+            }
+        })
+    }
     const emit = defineEmits(['close'])
 
     const form = reactive({
@@ -36,7 +53,7 @@
             return
         }
         fileDisplay.value = URL.createObjectURL(e.target.files[0])
-       
+
         setTimeout(() => {
             document.getElementById('TextAreaSection').scrollIntoView({behavior: 'smooth'});
         }, 300);
@@ -54,9 +71,11 @@
 
 <template>
     <div id="OverlaySection" class="fixed z-50 top-0 left-0 w-full h-screen bg-[#000000] bg-opacity-60 p-3">
+
         <button class="absolute right-3 cursor-pointer" @click="closeOverlay()">
             <Close :size="27" fillColor="#FFFFFF"/>
         </button>
+
         <div class="max-w-6xl h-[calc(100%-100px)] mx-auto mt-10 bg-white rounded-xl">
             <div class="flex items-center justify-between w-full rounded-t-xl p-3 border-b border-b-gray-300">
                 <ArrowLeft :size="30" fillColor="#000000" @click="closeOverlay()"/>
@@ -65,6 +84,7 @@
                     Share
                 </button>
             </div>
+
             <div class="w-full md:flex h-[calc(100%-55px)] rounded-xl overflow-auto">
                 <div class="flex items-center bg-gray-100 w-full h-full overflow-hidden">
                     <div v-if="!fileDisplay" class="flex flex-col items-center mx-auto">
@@ -87,10 +107,55 @@
                     </div>
                     <img v-if="fileDisplay && isValidFile === true" class=" min-w-[400px] p-4 mx-auto" :src="fileDisplay">
                 </div>
+
                 <div id="TextAreaSection" class="max-w-[720px] w-full relative">
                     <div class="flex items-center justify-between p-3">
-                        <img class="rounded-full w-[38px] h-[38px]" 39,29:                 src="http://via.placeholder.com/640x640">
-                        <div class="ml-4 font-extrabold text-[15px]">Name here</div>
+                        <div class="flex items-center">
+                            <img class="rounded-full w-[38px] h-[38px]" src="http://via.placeholder.com/640x640">
+                            <div class="ml-4 font-extrabold text-[15px]">Your name</div>
+                        </div>
+                    </div>
+
+                    <div v-if="error && error.text" class="text-red-500 p-2 font-extrabold">{{ error.text }}</div>
+
+                    <div class="flex w-full max-h-[200px] bg-white border-b">
+                        <textarea
+                            ref="textarea"
+                            v-model="form.text"
+                            placeholder="Write caption..."
+                            rows="10"
+                            class="
+                              placeholder-gray-500
+                                w-full
+                                border-0
+                                mt-2
+                                mb-2
+                                z-50
+                                focus:ring-0
+                                text-gray-600
+                                text-[18px]
+                            "
+                        ></textarea>
+                    </div>
+
+                    <div class="flex items-center justify-between border-b p-3">
+                        <div class="text-lg font-extrabold text-gray-500">Add Location</div>
+                        <MapMarkerOutline :size="27"/>
+                    </div>
+
+                    <div class="flex items-center justify-between border-b p-3">
+                        <div class="text-lg font-extrabold text-gray-500">Accesibility</div>
+                        <ChevronDown :size="27"/>
+                    </div>
+
+                    <div class="flex items-center justify-between border-b p-3">
+                        <div class="text-lg font-extrabold text-gray-500">Advanced Settings</div>
+                        <ChevronDown :size="27"/>
+                    </div>
+
+                    <div class="text-gray-500 mt-3 p-3 text-sm">
+                        Your reel will be shared with your followers in their feeds and can be seen on your profile.
+                        It may also appear in places such as Reels, where anyone can see it.
                     </div>
                 </div>
             </div>
