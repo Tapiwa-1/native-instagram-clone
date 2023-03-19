@@ -4,7 +4,7 @@ import { Head, Link, router } from '@inertiajs/vue3';
 
 import MainLayout from '@/Layouts/MainLayout.vue';
 // import ShowPostOverlay from '@/Components/ShowPostOverlay.vue'
-// import ContentOverlay from '@/Components/ContentOverlay.vue'
+import ContentOverlay from '@/Components/ContentOverlay.vue'
 
 import Cog from 'vue-material-design-icons/Cog.vue';
 import Grid from 'vue-material-design-icons/Grid.vue';
