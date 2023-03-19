@@ -14,6 +14,7 @@ let wWidth = ref(window.innerWidth)
 let currentSlide = ref(0)
 let currentPost = ref(null)
 let openOverlay = ref(false)
+
 const props = defineProps({ posts: Object, allUsers: Object })
 const { posts, allUsers } = toRefs(props)
 onMounted(() => {
@@ -27,7 +28,7 @@ onMounted(() => {
     <Head title="Instagram" />
 
     <MainLayout>
-        <div class="mx-auto lg:pl-0 md:pl-[80px] pl-0 bg-red-500">
+        <div class="mx-auto lg:pl-0 md:pl-[80px] pl-0 ">
             <Carousel
                 v-model="currentSlide"
                 class="max-w-[700px] mx-auto"
@@ -44,8 +45,13 @@ onMounted(() => {
                         <div class="absolute z-[-1] -top-[5px] left-[4px] rounded-full rotate-45 w-[64px] h-[64px] contrast-[1.3]  bg-gradient-to-t from-yellow-300 to-purple-500 via-red-500">
                             <div class="rounded-full ml-[3px] mt-[3px] w-[58px] h-[58px] bg-white" />
                         </div>
+                        <img class="rounded-full w-[56px] h-[56px] -mt-[1px]" src="http://via.placeholder.com/64x64">
+                        <div class="text-xs mt-2 w-[60px] truncate text-ellipsis overflow-hidden">Name here</div>
                     </Link>
                 </Slide>
+                <template #addons>
+                    <Navigation />
+                </template>
             </Carousel>
         </div>
     </MainLayout>
