@@ -72,7 +72,19 @@ onMounted(() => {
                     <img class="mx-auto w-full" src="http://via.placeholder.com/300x320"/>
                 </div>
                 <LikesSection/>
+                <div class="text-black font-extrabold py-1">65 likes</div>
+                <div>
+                    <span class="text-black font-extrabold">Name here</span>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum explicabo similique esse praesentium, sed temporibus cumque, eius nihil error itaque ea minus. Minima, eligendi? Officia minima commodi maxime dignissimos nemo.
+                </div>
+                <button
+
+                    class="text-gray-500 font-extrabold py-1"
+                >
+                    View all 44 comments
+                </button>
             </div>
+            <div class="pb-20"></div>
         </div>
     </MainLayout>
 
