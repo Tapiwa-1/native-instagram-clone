@@ -4,7 +4,7 @@ import { Head, Link, router } from '@inertiajs/vue3';
 import MainLayout from '@/Layouts/MainLayout.vue';
 
 
-// import LikesSection from '@/Components/LikesSection.vue'
+import LikesSection from '@/Components/LikesSection.vue'
 // import ShowPostOverlay from '@/Components/ShowPostOverlay.vue'
 import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Navigation } from 'vue3-carousel'
@@ -53,6 +53,26 @@ onMounted(() => {
                     <Navigation />
                 </template>
             </Carousel>
+            <!-- v-for="post in posts.data" :key="post" -->
+            <div id="Posts" class="px-4 max-w-[600px] mx-auto mt-10" >
+                <div class="flex items-center justify-between py-2">
+                    <div class="flex items-center">
+                        <Link href="/" class="flex items-center">
+                            <img class="rounded-full w-[38px] h-[38px]" src="http://via.placeholder.com/64x64">
+                            <div class="ml-4 font-extrabold text-[15px]">Name Here</div>
+                        </Link>
+                        <div class="flex items-center text-[15px] text-gray-500">
+                            <span class="-mt-5 ml-2 mr-[5px] text-[35px]">.</span>
+                            <div>Date here</div>
+                        </div>
+                    </div>
+                    <DotsHorizontal class="cursor-pointer" :size="27"/>
+                </div>
+                <div class="bg-black rounded-lg w-full min-h-[400px] flex items-center">
+                    <img class="mx-auto w-full" src="http://via.placeholder.com/300x320"/>
+                </div>
+                <LikesSection/>
+            </div>
         </div>
     </MainLayout>
 
