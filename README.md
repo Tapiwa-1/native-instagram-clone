@@ -1,6 +1,7 @@
 ## Instagram clone
 <p>Simple instagram clone l have developed with vuejs and laravel with the help of inertiaJs</p>
 <img  src="/public/Screenshots/home.png"/> 
+
 ## Features
 - User Login
 - User Register
